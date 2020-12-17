@@ -1,7 +1,7 @@
 <template>
   <template v-if="visible">
-    <teleport to="body">
-      <div class="gulu-dialog-overlay" @click="closeonClickOverlay"></div>
+    <Teleport to="body">
+      <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
       <div class="gulu-dialog-wrapper">
         <div class="gulu-dialog">
           <header>
@@ -17,9 +17,9 @@
           </footer>
         </div>
       </div>
-    </teleport>
+    </Teleport>
   </template>
-</template>
+</template> 
 <script lang="ts">
 import Button from "./Button.vue";
 export default {
@@ -57,7 +57,7 @@ export default {
       }
     };
     const cancel = () => {
-      context.emit("cancel");
+      props.cancel?.();
       close();
     };
     return {
@@ -69,7 +69,6 @@ export default {
   },
 };
 </script>
-
 <style lang="scss">
 $radius: 4px;
 $border-color: #d9d9d9;
