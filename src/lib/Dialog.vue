@@ -1,25 +1,25 @@
 <template>
   <template v-if="visible">
-    <div class="gulu-dialog-overlay" @click="closeonClickOverlay"></div>
-    <div class="gulu-dialog-wrapper">
-      <div class="gulu-dialog">
-        <header>
-          标题
-          <span @click="close" class="gulu-dialog-close"></span>
-        </header>
-        <main>
-          <p>第一行字</p>
-          <p>第二行字</p>
-        </main>
-        <footer>
-          <Button level="main" @click="ok">OK</Button>
-          <Button @click="Cancel">Cancel</Button>
-        </footer>
+    <teleport to="body">
+      <div class="gulu-dialog-overlay" @click="closeonClickOverlay"></div>
+      <div class="gulu-dialog-wrapper">
+        <div class="gulu-dialog">
+          <header>
+            <slot name="title" />
+            <span @click="close" class="gulu-dialog-close"></span>
+          </header>
+          <main>
+            <slot name="content" />
+          </main>
+          <footer>
+            <Button level="main" @click="ok">OK</Button>
+            <Button @click="cancel">Cancel</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </teleport>
   </template>
 </template>
-
 <script lang="ts">
 import Button from "./Button.vue";
 export default {
@@ -28,7 +28,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    closeonClickOverlay: {
+    closeOnClickOverlay: {
       type: Boolean,
       default: true,
     },
@@ -44,26 +44,31 @@ export default {
   },
   setup(props, context) {
     const close = () => {
-      if (props.ok?.() !== false) {
-        close();
-      }
+      context.emit("update:visible", false);
     };
-    const closeonClickOverlay = () => {
-      if (props.closeonClickOverlay) {
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
         close();
       }
     };
     const ok = () => {
-      const result = context.emit("ok");
+      if (props.ok?.() !== false) {
+        close();
+      }
     };
-    const Cancel = () => {
+    const cancel = () => {
       context.emit("cancel");
+      close();
     };
-    return { close, closeonClickOverlay, ok, Cancel };
+    return {
+      close,
+      onClickOverlay,
+      ok,
+      cancel,
+    };
   },
 };
 </script>
-
 
 <style lang="scss">
 $radius: 4px;
