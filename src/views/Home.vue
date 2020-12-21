@@ -3,8 +3,10 @@
     <div class="topnavAndBanner">
       <Topnav />
       <div class="banner">
-        <h1>瞳瞳的第一个UI框架</h1>
-        <h2>龙欣瞳宇宙第一可爱</h2>
+        <h1>UI框架</h1>
+        <h2>一个非常厉害的ui框架
+
+        </h2>
         <p class="actions">
           <a href="https://github.com">GitHub</a>
           <router-link to="/doc">开始</router-link>
