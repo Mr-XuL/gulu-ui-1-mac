@@ -23,6 +23,7 @@ export const router = createRouter({
                 { path: "", component: DocDemo },
                 { path: "intro", component: Intro },
                 { path: "get-started", component: GetStarted },
+                { path: "install", component: Install },
                 { path: "switch", component: SwitchDemo },
                 { path: "button", component: ButtonDemo },
                 { path: "dialog", component: DialogDemo },
