@@ -1,5 +1,5 @@
 {
-    "editor.codeActionsOnSave": null,
+    "editor.codeActionsOnSave": true,
     "auto-close-tag.activationOnLanguage": [
         "xml",
         "php",
