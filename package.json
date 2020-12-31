@@ -1,6 +1,6 @@
 {
   "name": "gulu-ui-1-mac",
-  "version": "0.0.1npm",
+  "version": "0.0.1",
   "files": [
     "dist/lib/*"
   ],
