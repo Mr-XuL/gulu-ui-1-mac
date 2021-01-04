@@ -3,7 +3,7 @@
     <div class="topnavAndBanner">
       <Topnav />
       <div class="banner">
-        <h1>陈瞳瞳的UI库</h1>
+        <h1>新的UI库</h1>
         <h2>是一个自己写的UI库哟</h2>
         <p class="actions">
           <a href="https://github.com">GitHub</a>
