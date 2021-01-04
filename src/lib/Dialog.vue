@@ -19,7 +19,7 @@
       </div>
     </Teleport>
   </template>
-</template> 
+</template>
 <script lang="ts">
 import Button from "./Button.vue";
 export default {
@@ -52,12 +52,12 @@ export default {
       }
     };
     const ok = () => {
-      if (props.ok?.() !== false) {
+      if (props.ok && props.ok() !== false) {
         close();
       }
     };
     const cancel = () => {
-      props.cancel?.();
+      props.cancel && props.cancel()
       close();
     };
     return {
